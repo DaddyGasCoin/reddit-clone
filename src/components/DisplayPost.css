@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+.post-wrapper,
+.post-content,
+.post-info-wrap,
+.link-wrapper,
+.link-box {
+    display: flex;
+    font-family: IBM;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.post-content {
+    flex-direction: column;
+    width: 33rem;
+    gap: .4rem;
+    padding-top: .5rem;
+}
+
+.post-wrapper {
+    gap: .5rem;
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+}
+
+.upvotes {
+    background-color: #f4f4f5;
+    padding: .5rem .3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 15px;
+}
+
+span.big {
+    font-size: 50px;
+}
+
+.up {
+    margin-bottom: -20px;
+}
+
+.down:hover {
+    color: #0ea5e9
+}
+
+.down {
+    margin-top: -15px;
+}
+
+.up:hover {
+    color: #ef4444
+}
+
+.post-info-wrap {
+    gap: .7rem;
+    font-size: 12px;
+}
+
+.author-text,
+.link-wrapper {
+    font-weight: 400;
+    color: rgb(120, 124, 126);
+}
+
+.thumbnail {
+    width: 500px;
+    height: 450px;
+    margin-bottom: 0%;
+}
+
+.thumb-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.link-box {
+    font-size: 14px;
+    gap: .5rem;
+    align-items: center;
+    padding: .4rem .2rem;
+    margin: 0%;
+    border-radius: 2px;
+}
+
+.link-box:hover {
+    background-color: #cbd5e1
+}
+
+.link-wrapper {
+    gap: 0.8rem;
+    padding: .2rem 0;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
