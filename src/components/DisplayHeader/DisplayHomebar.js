@@ -5,14 +5,14 @@ const DisplayHomeBar = () => {
 
     <button className="head-item-wrapper homex">
       <div className="home-wrapper">
-        <span class="material-symbols-outlined dark">
+        <span className="material-symbols-outlined dark">
           home
         </span>
         <div className='home-text'>
           Home
         </div>
       </div>
-      <span class="material-symbols-outlined">
+      <span className="material-symbols-outlined">
         expand_more
       </span>
     </button>
