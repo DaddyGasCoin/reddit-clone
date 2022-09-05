@@ -1,12 +1,13 @@
 import './DisplayPost.css'
-import { Link, Outlet } from "react-router-dom";
+import DisplaySortBox from './DisplaySortBox';
+import { Link } from "react-router-dom";
 
 
 const DisplayPost = (props) => {
-  const { posts} = props
+  const { posts } = props
   const { author, img, comment, content, sub, thumbnil, time, title, upvotes } = posts[Object.keys(posts)]
-
   return (
+
     <div className="post-wrapper">
       <div className="upvotes">
         <div className='up'>
@@ -36,7 +37,7 @@ const DisplayPost = (props) => {
         <div className='thumb-wrapper'>
           <img src={img} className="thumbnail" />
           <div className="link-wrapper">
-            <Link to={`/comments/${[Object.keys(posts)]}`}>
+            <Link style={{ textDecoration: 'none' }} to={`/comments/${[Object.keys(posts)]}`}>
               <div className="link-box">
                 <span className="material-symbols-outlined">
                   chat_bubble

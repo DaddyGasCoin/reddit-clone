@@ -25,6 +25,7 @@
     border: 1px solid black;
     width: fit-content;
     height: fit-content;
+    background-color: white;
 }
 
 .upvotes {
@@ -105,4 +106,70 @@ span.big {
         'wght' 400,
         'GRAD' 0,
         'opsz' 48
+}
+
+.page-wrapper {
+    display: flex;
+    padding-top: 50px;
+    flex-direction: column;
+    gap: 10px;
+    width: 100vw;
+    align-items: center;
+    background-color: #DAE0E6;
+}
+
+
+
+.link-box {
+    font-weight: 500;
+    color: rgb(120, 124, 126);
+
+}
+
+.sort-box {
+    width: 37.5rem;
+    display: flex;
+    background-color: #ffffff;
+    gap: 15px;
+    padding: 10px 20px;
+    border: thin solid transparent;
+    border-radius: 2px;
+}
+
+.box-option {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    color: #878a8c;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
+.box-option:hover {
+    background-color: #cbd5e1
+}
+
+.combo-item-wrapper {
+    position: absolute;
+    display: flex;
+    width: max-content;
+    background-color: #ffffff;
+
+    gap: 5px;
+    z-index: 2;
+}
+
+.sort-combo {
+    position: relative;
+}
+
+.combo-item {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 5px 5px;
+}
+
+.combo-item:hover {
+    background-color: #e0f2fe
 }
