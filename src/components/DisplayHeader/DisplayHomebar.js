@@ -1,6 +1,6 @@
 
-const DisplayHomeBar = () => {
-
+const DisplayHomeBar = (props) => {
+  const { handler } = props
   return (
     <div className="dropdown">
       <button className="head-item-wrapper homex">
@@ -17,12 +17,15 @@ const DisplayHomeBar = () => {
         </span>
       </button>
 
-      <div class="dropdown-content">
-        <div className="sub-link">
+      <div className="dropdown-content">
+        <div className="sub-link" onClick={handler}>
           AskReddit
         </div>
-        <div className="sub-link">
+        <div className="sub-link" onClick={handler}>
           ExplainLikeImFive
+        </div>
+        <div className="sub-link" onClick={handler}>
+          Front-Page
         </div>
       </div>
     </div>

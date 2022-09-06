@@ -10,7 +10,7 @@ const DisplayPage = (props) => {
         <div className='page-wrapper'>
             <DisplaySortBox />
             {content.map((post) => {
-                return <DisplayPost posts={post} key={post[Object.keys(post)]} />
+                return <DisplayPost posts={post} key={Object.keys(post)} />
             })}
         </div>
     )

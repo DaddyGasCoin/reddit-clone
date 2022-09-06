@@ -1,5 +1,4 @@
 import './DisplayPost.css'
-import DisplaySortBox from './DisplaySortBox';
 import { Link } from "react-router-dom";
 
 
@@ -35,7 +34,7 @@ const DisplayPost = (props) => {
           {title}
         </div>
         <div className='thumb-wrapper'>
-          <img src={img} className="thumbnail" />
+          {img ? <img src={img} className="thumbnail" /> : null}
           <div className="link-wrapper">
             <Link style={{ textDecoration: 'none' }} to={`/comments/${[Object.keys(posts)]}`}>
               <div className="link-box">

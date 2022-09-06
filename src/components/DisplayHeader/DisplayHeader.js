@@ -5,7 +5,8 @@ import DisplayHomeBar from './DisplayHomebar'
 import { Outlet } from "react-router-dom";
 
 
-const DisplayHeader = () => {
+const DisplayHeader = (props) => {
+   const { handler } = props
 
    return (
       <>
@@ -14,7 +15,7 @@ const DisplayHeader = () => {
                <div className=' head-item-wrapper logo'>
                   reddit
                </div>
-               <DisplayHomeBar />
+               <DisplayHomeBar handler={handler} />
             </div>
             <div className="wrapper">
                <div className="head-item-wrapper">

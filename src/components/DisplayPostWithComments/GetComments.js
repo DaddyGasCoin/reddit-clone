@@ -4,11 +4,12 @@ import { getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import DisplayPostBig from "./DisplayPostBig";
 
-const GetComments = () => {
+const GetComments = (props) => {
+   const { sub } = props
    const params = useParams();
    const [data, setData] = useState()
    useEffect(() => {
-      const docRef = doc(db, "reddit-front-hot", params.Id);
+      const docRef = doc(db, sub, params.Id);
       async function getCommentsFromDB() {
          const docSnap = await getDoc(docRef);
          setData(docSnap.data())
