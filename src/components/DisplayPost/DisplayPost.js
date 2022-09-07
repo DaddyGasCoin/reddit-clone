@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const DisplayPost = (props) => {
   const { posts } = props
   const { author, img, comment, content, sub, thumbnil, time, title, upvotes } = posts[Object.keys(posts)]
+  const formated_upvotes = Intl.NumberFormat('en', { notation: 'compact' }).format(upvotes)
   return (
 
     <div className="post-wrapper">
@@ -14,7 +15,7 @@ const DisplayPost = (props) => {
             arrow_drop_up
           </span>
         </div>
-        {upvotes}
+        {formated_upvotes}
         <div className='down'>
           <span className="material-symbols-outlined big">
             arrow_drop_down
