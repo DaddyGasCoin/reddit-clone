@@ -5,29 +5,30 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DisplayHeader from './components/DisplayHeader/DisplayHeader';
 import GetComments from './components/DisplayPostWithComments/GetComments';
 import DisplayPage from './components/DisplayPost/DisplayPage';
+
 function App() {
 
   const [frontPage, setFrontPage] = useState([])
-  const [currentSub, setCurrentSub] = useState([])
   const [subName, setSubName] = useState()
 
   //Display front page on first load
   useEffect(() => {
     async function getDataFromDB() {
       const querySnapshot = await getDocs(collection(db, 'reddit-front-hot'))
+      let posts = []
       querySnapshot.forEach((doc) => {
         const obj = {
           [doc.id]: doc.data()
         }
-        setFrontPage(oldArray => [...oldArray, obj]);
+        posts = [...posts, obj]
       })
-      setCurrentSub(frontPage)
+      setFrontPage(posts)
+      setSubName('reddit-front-hot')
     }
     getDataFromDB()
-    setSubName('reddit-front-hot')
   }, [])
 
-
+  // Maps subreddit to firestore document
   const subMap = {
     AskReddit: 'askreddit-hot',
     ExplainLikeImFive: 'explainlikeimfive-hot',
@@ -36,27 +37,17 @@ function App() {
 
   function subHandler(event) {
     const name = event.target.textContent
-    const x = subMap[name]
-    let arr = []
-    async function changeSub() {
-      const querySnapshot = await getDocs(collection(db, x))
-      querySnapshot.forEach((doc) => {
-        const obj = {
-          [doc.id]: doc.data()
-        }
-        arr = [...arr, obj]
-      })
-      setCurrentSub(arr)
-      setSubName(x)
-    }
-    changeSub()
+    setSubName(subMap[name])
   }
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DisplayHeader handler={subHandler} />}>
-          <Route path="/" element={currentSub ? <DisplayPage content={currentSub} /> : null} />
+          <Route path="/" element={frontPage ? <DisplayPage content={frontPage} /> : null} />
+          <Route path='/r'>
+            <Route path=":sub" element={<DisplayPage />} />
+          </Route>
           <Route path='/comments'>
             <Route path=":Id" element={<GetComments sub={subName} />} />
           </Route>

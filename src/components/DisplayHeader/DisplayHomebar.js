@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const DisplayHomeBar = (props) => {
   const { handler } = props
@@ -18,15 +19,21 @@ const DisplayHomeBar = (props) => {
       </button>
 
       <div className="dropdown-content">
-        <div className="sub-link" onClick={handler}>
-          AskReddit
-        </div>
-        <div className="sub-link" onClick={handler}>
-          ExplainLikeImFive
-        </div>
-        <div className="sub-link" onClick={handler}>
-          Front-Page
-        </div>
+        <Link style={{ textDecoration: 'none' }} to={`/r/AskReddit`}>
+          <div className="sub-link" onClick={handler}>
+            AskReddit
+          </div>
+        </Link>
+        <Link style={{ textDecoration: 'none' }} to={`/r/ExplainLikeImFive`}>
+          <div className="sub-link" onClick={handler}>
+            ExplainLikeImFive
+          </div>
+        </Link>
+        <Link style={{ textDecoration: 'none' }} to={`/`}>
+          <div className="sub-link" onClick={handler}>
+            Front-Page
+          </div>
+        </Link>
       </div>
     </div>
 

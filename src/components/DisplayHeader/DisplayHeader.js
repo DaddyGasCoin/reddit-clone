@@ -7,7 +7,6 @@ import { Outlet } from "react-router-dom";
 
 const DisplayHeader = (props) => {
    const { handler } = props
-
    return (
       <>
          <div className="header">
