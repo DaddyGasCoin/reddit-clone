@@ -42,3 +42,5 @@ const DisplayHomeBar = (props) => {
 }
 
 export default DisplayHomeBar
+
+// onClick={(event) => handler(event, params)}

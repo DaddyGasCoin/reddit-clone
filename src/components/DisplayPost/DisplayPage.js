@@ -5,41 +5,69 @@ import { getDocs, collection } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
-const DisplayPage = () => {
-    const params = useParams();
-    const [posts, setPosts] = useState([])
+const DisplayPage = (props) => {
 
-    //Maps subreddit to firestore document
-    const subMap = {
-        AskReddit: 'askreddit-hot',
-        ExplainLikeImFive: 'explainlikeimfive-hot',
+  // content prop contains front page;props optional parameter
+  const { content, handler } = props
+  const params = useParams();
+  const [posts, setPosts] = useState([])
+
+  //Maps subreddit to firestore document
+  const subMap = {
+    AskReddit: {
+      'ThisMonth': 'askreddit-top-month',
+      'Hot': 'askreddit-hot',
+      'ThisWeek': 'askreddit-top-week',
+      'ThisYear': 'askreddit-top-year',
+      'AllTime': 'askreddit-top-all',
+      'New': 'askreddit-new'
+    },
+    ExplainLikeImFive: {
+      'ThisMonth': 'explainlikeimfive-top-month',
+      'Hot': 'explainlikeimfive-hot',
+      'ThisWeek': 'explainlikeimfive-top-week',
+      'AllTime': 'explainlikeimfive-top-all',
+      'ThisYear': 'explainlikeimfive-top-year'
     }
-    useEffect(() => {
-        let doc;
-        subMap[params.sub] ? doc = subMap[params.sub] : doc = 'reddit-front-hot';
-        async function getDataFromDB() {
-            const querySnapshot = await getDocs(collection(db, doc))
-            let posts = []
-            querySnapshot.forEach((doc) => {
-                const obj = {
-                    [doc.id]: doc.data()
-                }
-                posts = [...posts, obj]
-            })
-            setPosts(posts)
+  }
+  useEffect(() => {
+    async function getDataFromDB(document) {
+      const querySnapshot = await getDocs(collection(db, document))
+      let posts = []
+      querySnapshot.forEach((doc) => {
+        const obj = {
+          [doc.id]: doc.data()
         }
-        getDataFromDB()
-    }, [posts])
+        posts = [...posts, obj]
+      })
+      setPosts(posts)
+    }
 
-    return (
+    if (!content) {
+      let doc
+      if (params.filter) {
+        doc = subMap[params.sub][params.filter]
+      }
+      else {
+        doc = subMap[params.sub].Hot
+      }
+      getDataFromDB(doc)
+    }
+    else {
+      setPosts(content)
+    }
 
-        <div className='page-wrapper'>
-            <DisplaySortBox />
-            {posts.map((post) => {
-                return <DisplayPost posts={post} key={Object.keys(post)} />
-            })}
-        </div>
-    )
+  }, [params])
+
+  return (
+
+    <div className='page-wrapper'>
+      <DisplaySortBox handler={handler} />
+      {posts.map((post) => {
+        return <DisplayPost posts={post} key={Object.keys(post)} />
+      })}
+    </div>
+  )
 }
 
 export default DisplayPage
