@@ -2,12 +2,11 @@ import './Post.css'
 
 
 const DisplayPostInfo = (props) => {
-  const [author, title] = props.data
-
+  const [author, title, formatedTime] = props.data
   return (
     <div className="post-info">
       <div className="author-text">
-        Posted by u/{author}
+        Posted by u/{author} {formatedTime}
       </div>
       <div className="post-title">
         {title}

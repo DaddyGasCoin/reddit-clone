@@ -1,11 +1,15 @@
 import './DisplayPost.css'
 import { Link } from "react-router-dom";
+import formater from '../../timeFormat'
+
 
 
 const DisplayPost = (props) => {
   const { posts } = props
   const { author, img, comment, content, sub, thumbnil, time, title, upvotes } = posts[Object.keys(posts)]
   const formated_upvotes = Intl.NumberFormat('en', { notation: 'compact' }).format(upvotes)
+  const diff = new Date() - new Date(time * 1000)
+  const formatedTime = formater(diff)
   return (
 
     <div className="post-wrapper">
@@ -24,11 +28,12 @@ const DisplayPost = (props) => {
       </div>
       <div className="post-content">
         <div className="post-info-wrap">
-          <div className="subname">
+          {/* Render subname if frontpage */}
+          {sub ? <div className="subname">
             r/{sub}
-          </div>
+          </div> : null}
           <div className="author-text">
-            Posted by u/{author}
+            Posted by u/{author} {formatedTime}
           </div>
         </div>
         <div className="post=title">
