@@ -4,7 +4,6 @@
 
 .content-wrapper {
     display: flex;
-    font-family: IBM;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 700;
     border-radius: 4px;
@@ -104,4 +103,48 @@ span.medium {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+.comment-sort {
+    color: #444e59;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 16px;
+    border-bottom: 1px solid #EDEFF1;
+    padding: 8px 2px;
+    margin-bottom: 20px;
+
+}
+
+.vote-content {
+    background-color: #f4f4f5;
+}
+
+.comment-sort-combo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    background-color: #ffffff;
+    gap: 5px;
+    z-index: 2;
+    left: 100px;
+    border-radius: 4%;
+    border-bottom: 1px solid #EDEFF1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.sort-combo-item {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 5px 10px;
+    color: #878a8c;
+
+
+}
+
+.sort-combo-item:hover {
+    background-color: #e0f2fe
 }
