@@ -8,8 +8,10 @@
 
 
 .header {
-    display: flex;
+    display: grid;
     width: 100vw;
+    gap: 10px;
+    grid-template-columns: 2fr 4fr 1.7fr;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 24px;
     justify-content: space-between;
@@ -20,6 +22,13 @@
 .wrapper {
     display: flex;
     gap: 2rem;
+    grid-column: 1/2;
+
+}
+
+.wrapper.two {
+    grid-column: 2/3;
+    justify-content: space-between;
 
 }
 
@@ -50,7 +59,7 @@ span.dark {
 }
 
 .homex {
-    width: 15rem;
+    width: 100%;
     justify-content: space-between;
     background-color: white;
     border: 0px;
@@ -80,6 +89,7 @@ span.dark {
 
 .logo {
     font-weight: 500;
+    padding-left: 3px;
 }
 
 .home-text {
@@ -87,11 +97,16 @@ span.dark {
     font-weight: 500;
 }
 
+.head-item-wrapper.search-box {
+    width: 100%;
+}
+
 .search-wrap {
     display: flex;
     align-items: center;
     padding: 0px 5px;
-    background-color: #F6F7F8
+    background-color: #F6F7F8;
+    width: 100%;
 }
 
 .homex:focus,
@@ -104,7 +119,7 @@ input[type='search'] {
     align-self: center;
     opacity: .9;
     border: 0;
-    width: 30rem;
+    width: 100%;
     background-color: #F6F7F8;
 }
 
@@ -125,24 +140,28 @@ input[type='search']:focus {
     border-radius: 9999px;
     padding: 6px 10px;
     min-width: 7rem;
+    font-size: 1.2vw;
     border: none;
-    font-size: 1rem;
     font-weight: 500;
 }
 
 .login-wrap {
     gap: 10px;
+    grid-column: 3/4;
+    justify-content: space-evenly;
 }
 
 .dropdown {
     border: .5px solid #e5e7eb;
+    width: 80%;
+    position: relative;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: white;
-    width: 15rem;
+    width: 100%;
 }
 
 .dropdown-content {

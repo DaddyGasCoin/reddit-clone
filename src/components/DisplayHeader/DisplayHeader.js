@@ -16,8 +16,8 @@ const DisplayHeader = (props) => {
                </div>
                <DisplayHomeBar handler={handler} />
             </div>
-            <div className="wrapper">
-               <div className="head-item-wrapper">
+            <div className="wrapper two">
+               <div className="head-item-wrapper search-box">
                   <div className='search-wrap'>
                      <label> <span className="material-symbols-outlined">
                         search
