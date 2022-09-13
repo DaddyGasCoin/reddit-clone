@@ -27,7 +27,8 @@ const DisplayPage = (props) => {
       'Hot': 'explainlikeimfive-hot',
       'ThisWeek': 'explainlikeimfive-top-week',
       'AllTime': 'explainlikeimfive-top-all',
-      'ThisYear': 'explainlikeimfive-top-year'
+      'ThisYear': 'explainlikeimfive-top-year',
+      'New': 'explainlikeimfive-new'
     }
   }
   useEffect(() => {

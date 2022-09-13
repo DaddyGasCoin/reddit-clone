@@ -43,7 +43,8 @@ function App() {
       'Hot': 'explainlikeimfive-hot',
       'ThisWeek': 'explainlikeimfive-top-week',
       'AllTime': 'explainlikeimfive-top-all',
-      'ThisYear': 'explainlikeimfive-top-year'
+      'ThisYear': 'explainlikeimfive-top-year',
+      'New': 'explainlikeimfive-new'
     },
     'Front-Page': 'reddit-front-hot'
   }
@@ -83,21 +84,3 @@ function App() {
 }
 
 export default App;
-
-
-// function subHandler(event, param) {
-//   const name = event.target.textContent
-//   console.log(name)
-//   console.log(param.filter)
-//   if (name != 'Front-Page') {
-//     if (param.filter) {
-//       setSubName(subMap[name][param.filter])
-//     }
-//     else {
-//       setSubName(subMap[name].Hot)
-//     }
-//   }
-//   else {
-//     setSubName(subMap[name])
-//   }
-// }
