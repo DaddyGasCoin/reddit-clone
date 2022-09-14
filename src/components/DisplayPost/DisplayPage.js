@@ -1,7 +1,8 @@
 import DisplayPost from './DisplayPost'
 import DisplaySortBox from './DisplaySortBox';
+import DisplayRules from './DisplayRules';
 import db from '../../firebase.config'
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
@@ -11,6 +12,7 @@ const DisplayPage = (props) => {
   const { content, handler } = props
   const params = useParams();
   const [posts, setPosts] = useState([])
+  const [rules, setRules] = useState()
 
   //Maps subreddit to firestore document
   const subMap = {
@@ -32,7 +34,7 @@ const DisplayPage = (props) => {
     }
   }
   useEffect(() => {
-    async function getDataFromDB(document) {
+    async function getAllPostsFromDB(document) {
       const querySnapshot = await getDocs(collection(db, document))
       let posts = []
       querySnapshot.forEach((doc) => {
@@ -52,7 +54,7 @@ const DisplayPage = (props) => {
       else {
         doc = subMap[params.sub].Hot
       }
-      getDataFromDB(doc)
+      getAllPostsFromDB(doc)
     }
     else {
       setPosts(content)
@@ -60,13 +62,26 @@ const DisplayPage = (props) => {
 
   }, [params])
 
+  useEffect(() => {
+    async function getCommentsFromDB() {
+      const docname = `${params.sub}-rules`.toLowerCase()
+      const docRef = doc(db, docname, 'rules');
+      const docSnap = await getDoc(docRef);
+      setRules(docSnap.data())
+    }
+    getCommentsFromDB()
+  }, [params.sub])
+
   return (
 
     <div className='page-wrapper'>
-      <DisplaySortBox handler={handler} />
-      {posts.map((post) => {
-        return <DisplayPost posts={post} key={Object.keys(post)} />
-      })}
+      <div className='content-wrapper'>
+        <DisplaySortBox handler={handler} />
+        {posts.map((post) => {
+          return <DisplayPost posts={post} key={Object.keys(post)} />
+        })}
+      </div>
+      {rules ? <DisplayRules data={rules.data} /> : null}
     </div>
   )
 }
