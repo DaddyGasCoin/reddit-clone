@@ -111,12 +111,9 @@ span.big {
 .page-wrapper {
     display: flex;
     padding-top: 50px;
-    /* flex-direction: column; */
-    gap: 100px;
     width: 100vw;
-    justify-content: center;
-    /* align-items: center; */
-    background-color: #DAE0E6;
+    justify-content: space-evenly;
+    background-color: #e9eef5
 }
 
 
@@ -177,12 +174,9 @@ span.big {
 
 .content-wrapper {
     display: flex;
-    /* padding-top: 50px; */
     flex-direction: column;
     gap: 10px;
-    /* width: 100vw; */
     align-items: center;
-    background-color: #DAE0E6;
 }
 
 .rules-box {

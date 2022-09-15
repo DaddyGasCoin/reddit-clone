@@ -19,7 +19,7 @@ const GetComments = (props) => {
 
    return (
       <>
-         {data ? <DisplayPostBig data={data} /> : null}
+         {data ? <DisplayPostBig data={data} sub={sub} /> : null}
       </>
    )
 }

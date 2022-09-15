@@ -8,7 +8,7 @@ const DisplayRules = (props) => {
     <div className="rules-box">
       <div className="rules-sub">r/{params.sub} Rules</div>
       {data.map((rule, index) => {
-        return <div className="rule-item" key={index}>{rule.short_name}</div>
+        return (<div className="rule-item" key={index}>{index + 1}. {rule.short_name}</div>)
       })}
     </div>
   )

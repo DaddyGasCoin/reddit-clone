@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400&display=swap');
 
-.content-wrapper {
+.content-wrapper-big {
     display: flex;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 700;
@@ -114,6 +114,7 @@ span.medium {
     border-bottom: 1px solid #EDEFF1;
     padding: 8px 2px;
     margin-bottom: 20px;
+    position: relative;
 
 }
 
@@ -129,7 +130,7 @@ span.medium {
     background-color: #ffffff;
     gap: 5px;
     z-index: 2;
-    left: 100px;
+    left: 5%;
     border-radius: 4%;
     border-bottom: 1px solid #EDEFF1;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -147,4 +148,12 @@ span.medium {
 
 .sort-combo-item:hover {
     background-color: #e0f2fe
+}
+
+.row-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #e9eef5;
+    width: 100vw;
+    padding-top: 4%;
 }
