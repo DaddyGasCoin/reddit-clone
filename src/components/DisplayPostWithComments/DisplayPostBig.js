@@ -6,6 +6,7 @@ import DisplayComments from './DisplayComments'
 import formater from '../../timeFormat'
 import DisplayCommentSort from './DisplayCommentSort'
 import DisplayRules from '../DisplayPost/DisplayRules'
+import DisplaySidebar from '../DisplayPost/DisplaySidebar'
 import { useState, useEffect } from 'react'
 import db from '../../firebase.config'
 import { getDoc, doc } from "firebase/firestore";
@@ -34,6 +35,7 @@ const DisplayPostBig = (props) => {
    useEffect(() => {
       async function getCommentsFromDB() {
          if (sub.includes('front')) {
+            setRules('front')
             return
          }
          const str = sub.substring(0, sub.indexOf('-'))
@@ -62,7 +64,18 @@ const DisplayPostBig = (props) => {
                })}
             </div>
          </div>
-         {rules ? <DisplayRules data={rules} /> : null}
+         {/* {rules ? <DisplayRules data={rules} /> : <DisplaySidebar />} */}
+         {
+            (() => {
+               if (rules === 'front')
+                  return <DisplaySidebar />
+               if (rules)
+                  return <DisplayRules data={rules} />
+               else
+                  return null
+            })()
+         }
+
 
       </div>
    )
@@ -70,3 +83,13 @@ const DisplayPostBig = (props) => {
 
 export default DisplayPostBig
 
+// {
+//    (() => {
+//        if (rules === 'front')
+//           return <DisplaySidebar/>
+//        if (rules)
+//           return <DisplayRules data={rules}/>
+//        else 
+//           return null
+//    })()
+// }

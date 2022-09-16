@@ -2,6 +2,7 @@ import DisplayPost from './DisplayPost'
 import DisplaySortBox from './DisplaySortBox';
 import DisplayRules from './DisplayRules';
 import db from '../../firebase.config'
+import DisplaySidebar from './DisplaySidebar';
 import { getDocs, collection, getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
@@ -65,6 +66,11 @@ const DisplayPage = (props) => {
   useEffect(() => {
     async function getCommentsFromDB() {
       const docname = `${params.sub}-rules`.toLowerCase()
+      // check if front page
+      if (docname === 'undefined-rules') {
+        setRules('front')
+        return
+      }
       const docRef = doc(db, docname, 'rules');
       const docSnap = await getDoc(docRef);
       setRules(docSnap.data())
@@ -81,7 +87,18 @@ const DisplayPage = (props) => {
           return <DisplayPost posts={post} key={Object.keys(post)} />
         })}
       </div>
-      {rules ? <DisplayRules data={rules.data} /> : null}
+      {
+        (() => {
+          if (rules === 'front')
+            return <DisplaySidebar />
+          // return null while fetching data
+          if (rules)
+            return <DisplayRules data={rules.data} />
+          else
+            return null
+        })()
+      }
+
     </div>
   )
 }

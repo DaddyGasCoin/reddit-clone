@@ -88,6 +88,10 @@
     color: #ef4444
 }
 
+span.green {
+    color: #15803d;
+}
+
 span.medium {
     font-size: 30px;
     padding: 0px;
@@ -156,4 +160,10 @@ span.medium {
     background-color: #e9eef5;
     width: 100vw;
     padding-top: 4%;
+}
+
+.rule-item.wrap {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
 }
