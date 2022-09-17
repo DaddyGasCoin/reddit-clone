@@ -15,7 +15,7 @@
 
 .post-content {
     flex-direction: column;
-    width: 33rem;
+    width: 40rem;
     gap: .4rem;
     padding-top: .5rem;
 }
@@ -78,11 +78,19 @@ span.medium {
     width: 500px;
     height: 450px;
     margin-bottom: 0%;
+    align-self: center;
+}
+
+.thumb-small {
+    width: auto;
+    height: 150px;
+    padding: 10px;
 }
 
 .thumb-wrapper {
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
 }
 
 .link-box {
@@ -130,7 +138,7 @@ span.medium {
 }
 
 .sort-box {
-    width: 37.5rem;
+    width: 44rem;
     display: flex;
     background-color: #ffffff;
     gap: 15px;
@@ -217,4 +225,26 @@ span.medium {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
+}
+
+.test-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    font-size: 13px;
+}
+
+.column-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding-right: 5px;
+
+}
+
+.outbound-content {
+    width: 250px;
+    height: 150px;
 }
