@@ -32,6 +32,14 @@ const DisplayPage = (props) => {
       'AllTime': 'explainlikeimfive-top-all',
       'ThisYear': 'explainlikeimfive-top-year',
       'New': 'explainlikeimfive-new'
+    },
+    'front': {
+      'Hot': 'front-page-hot',
+      'ThisWeek': 'front-page-top-week',
+      'AllTime': 'reddit-front-hot',
+      'New': 'front-page-new',
+      'ThisMonth': 'front-page-top-month',
+      'ThisYear': 'front-page-top-year'
     }
   }
   useEffect(() => {
@@ -67,7 +75,7 @@ const DisplayPage = (props) => {
     async function getCommentsFromDB() {
       const docname = `${params.sub}-rules`.toLowerCase()
       // check if front page
-      if (docname === 'undefined-rules') {
+      if (docname === 'undefined-rules' || docname === 'front-rules') {
         setRules('front')
         return
       }

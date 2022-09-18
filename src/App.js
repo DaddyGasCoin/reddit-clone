@@ -14,7 +14,7 @@ function App() {
   //Display front page on first load
   useEffect(() => {
     async function getDataFromDB() {
-      const querySnapshot = await getDocs(collection(db, 'reddit-front-hot'))
+      const querySnapshot = await getDocs(collection(db, 'front-page-hot'))
       let posts = []
       querySnapshot.forEach((doc) => {
         const obj = {
@@ -46,13 +46,20 @@ function App() {
       'ThisYear': 'explainlikeimfive-top-year',
       'New': 'explainlikeimfive-new'
     },
-    'Front-Page': 'reddit-front-hot'
+    'front': {
+      'Hot': 'front-page-hot',
+      'ThisWeek': 'front-page-top-week',
+      'AllTime': 'reddit-front-hot',
+      'New': 'front-page-new',
+      'ThisMonth': 'front-page-top-month',
+      'ThisYear': 'front-page-top-year'
+    }
   }
 
   function subHandler(event) {
     const name = event.target.textContent
     if (name === 'Front-Page') {
-      setSubName(subMap[name])
+      setSubName(subMap.front.Hot)
     }
     else {
       setSubName(subMap[name].Hot)
@@ -60,7 +67,7 @@ function App() {
   }
 
   function sortHandler(event, param, sort) {
-    const doc = (subMap[param.sub][sort])
+    const doc = (subMap[param][sort])
     setSubName(doc)
   }
 
@@ -68,7 +75,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DisplayHeader handler={subHandler} />}>
-          <Route path="/" element={frontPage ? <DisplayPage content={frontPage} /> : null} />
+          <Route path="/" element={frontPage ? <DisplayPage content={frontPage} handler={sortHandler} /> : null} />
           <Route path='/r'>
             <Route path=":sub" element={<DisplayPage handler={sortHandler} />} />
             <Route path=":sub/:filter" element={<DisplayPage handler={sortHandler} />} />
