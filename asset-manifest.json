@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reddit-clone/static/css/main.79b03256.css",
+    "main.js": "/reddit-clone/static/js/main.4576e643.js",
+    "index.html": "/reddit-clone/index.html",
+    "main.79b03256.css.map": "/reddit-clone/static/css/main.79b03256.css.map",
+    "main.4576e643.js.map": "/reddit-clone/static/js/main.4576e643.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79b03256.css",
+    "static/js/main.4576e643.js"
+  ]
+}
