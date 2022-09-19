@@ -16,19 +16,26 @@ import { orderBy } from 'lodash'
 const DisplayPostBig = (props) => {
 
   const { data, sub } = props
-  const { author, img, comment, content, time, title, upvotes, thumbnil } = data
+  const { author, comment, content, time, title, upvotes, thumbnil } = data
+  let { img } = data
   const formated_upvotes = Intl.NumberFormat('en', { notation: 'compact' }).format(upvotes)
   const diff = new Date() - new Date(time * 1000)
   const formatedTime = formater(diff)
   const [comments, setComments] = useState(comment)
   const [rules, setRules] = useState()
   const best = comment
-
   let outBoundLink = false;
+
+  //check if post contains link to foreign website
   if (img) {
-    if (!img.includes('jpg')) {
+    if (!img.includes('/gallery/')) {
+      outBoundLink = false
+    }
+    if (!img.includes('i.redd.it')) {
       outBoundLink = true
     }
+    if (img.includes('reddit.com') && !img.includes('/gallery'))
+      img = null
   }
 
   function sortComments(event, option) {
@@ -62,6 +69,9 @@ const DisplayPostBig = (props) => {
         </div>
         <div className='post-content'>
           <DisplayPostInfo data={[author, title, formatedTime]} />
+          {content ? <div className='content-text-full'>
+            {content}
+          </div> : null}
           {
             (() => {
               if (!img)

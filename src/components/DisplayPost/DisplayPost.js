@@ -2,21 +2,28 @@ import './DisplayPost.css'
 import { Link } from "react-router-dom";
 import formater from '../../timeFormat'
 
-
-
 const DisplayPost = (props) => {
   const { posts } = props
-  const { author, img, comment, content, sub, thumbnil, time, title, upvotes } = posts[Object.keys(posts)]
+  const { author, content, sub, thumbnil, time, title, upvotes } = posts[Object.keys(posts)]
+  let { img } = posts[Object.keys(posts)]
   const formated_upvotes = Intl.NumberFormat('en', { notation: 'compact' }).format(upvotes)
   const diff = new Date() - new Date(time * 1000)
   const formatedTime = formater(diff)
-
-
   let outBoundLink = false;
+
   if (img) {
-    if (!img.includes('jpg')) {
+    if (!img.includes('/gallery/')) {
+      outBoundLink = false
+    }
+
+    if (!img.includes('i.redd.it')) {
       outBoundLink = true
     }
+    if (img.includes('reddit.com') && !img.includes('/gallery')) {
+      img = null
+      outBoundLink = false
+    }
+
   }
   return (
 
@@ -46,9 +53,12 @@ const DisplayPost = (props) => {
                 Posted by u/{author} {formatedTime}
               </div>
             </div>
-            <div className="post=title">
+            <div className="post-title">
               {title}
             </div>
+            {content ? <div className='content-text'>
+              {content}
+            </div> : null}
             {/* display thumbnail and link if foreign content */}
             {outBoundLink ? <a href={img} target="_blank" rel="noopener noreferrer" > {img} </a> : null}
           </div>
