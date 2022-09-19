@@ -22,10 +22,13 @@
 
 .post-wrapper {
     gap: .5rem;
-    border: 1px solid black;
     width: fit-content;
     height: fit-content;
     background-color: white;
+}
+
+.post-wrapper:hover {
+    outline: thin solid #898988;
 }
 
 .upvotes {
@@ -36,6 +39,7 @@
     align-items: center;
     position: relative;
     font-size: 15px;
+    border-radius: 4px;
 }
 
 span.big {
@@ -90,7 +94,6 @@ span.medium {
 .thumb-wrapper {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
 
 .link-box {
@@ -125,8 +128,10 @@ span.medium {
     display: flex;
     padding-top: 50px;
     width: 100vw;
+    min-height: 100vh;
     justify-content: space-evenly;
-    background-color: #e9eef5
+    background-color: #e9eef5;
+    padding-bottom: 10px;
 }
 
 

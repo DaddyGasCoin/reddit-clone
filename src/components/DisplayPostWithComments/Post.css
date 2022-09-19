@@ -43,7 +43,7 @@
 }
 
 .post-title {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
@@ -107,6 +107,7 @@ span.medium {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    padding-left: .5rem;
 }
 
 .comment-sort {
@@ -160,6 +161,7 @@ span.medium {
     background-color: #e9eef5;
     width: 100vw;
     padding-top: 4%;
+    min-height: 95vh;
 }
 
 .rule-item.wrap {
