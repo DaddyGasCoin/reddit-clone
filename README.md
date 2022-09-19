@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Summary
+ A reddit clone built using react and firebase
+ 
+[Live Preview](https://daddygascoin.github.io/reddit-clone/) :point_left:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+ - View multiple subreddits
+ - Sort posts of a subreddit [all time,new,week,etc] 
+- View comments
+- Sort comments
+- View rules of subreddit
 
-## Available Scripts
+## Tools
 
-In the project directory, you can run:
+### Frameworks
+- [React](https://reactjs.org/)
+### Packages
+- [React Router](https://reactrouter.com/)
+- [FireBase](http://firebase.google.com/)
+- [pretty-ms](https://www.npmjs.com/package/pretty-ms) 
+- [Lodash](https://lodash.com/)
+- [ssnoowrap](https://not-an-aardvark.github.io/snoowrap/)
+ 
+### Database
+- [FireStore](https://firebase.google.com/products/firestore)
 
-### `npm start`
+# Description
+ All data is retrived using the [ssnoowrap](https://not-an-aardvark.github.io/snoowrap/) wrapper for the reddit API and stored in firestore. Each collection in the database contains data for one subreddit and its sort. eg Ask-reddit-Top-All containg the top posts of all time for the AskReddit sub. Unfortunately i couldnt figure out how to store a collection within a collecion without manually entering it so instead of something like this: 
+ 
+ - Subreddit-A 
+   - A-HOT-Posts
+     - Post-Data
+   - A-New-Posts
+     - Post-Data
+   - A-Top-Posts
+      - All Time Post
+          - Posts Data
+       - Top Year Post
+          - Posts Data
+        - Top Month Post
+          - Posts Data
+    
+ - Subreddit-B 
+   - B-HOT-Posts
+     - Post-Data
+   - B-New-Posts
+     - Post-Data
+   - B-Top-Posts
+      - All Time Post
+          - Posts Data
+       - Top Year Post
+          - Posts Data
+        - Top Month Post
+          - Posts Data
+          
+ the database ended up something like this:
+ 
+ - Subreddit-A-Top-All-Time
+ - Subreddit-A-Top-Month
+ - Subreddit-A-Top-Month
+ - Subreddit-B-Top-All-Time
+ - Subreddit-B-Top-Month
+ - Subreddit-B-Top-Month
+ 
+ The downside of this was when creating dynamic routes i couldnt use the paramters to query the database
+ ```
+  <Route path=":sub" element={<DisplayPage handler={sortHandler} />} />
+  <Route path=":sub/:filter" element={<DisplayPage handler={sortHandler} />} />
+  ```
+  if the first path was hit which  displays the hot page of the sub i could match the :sub paramter and query the *:sub*-Hot-Posts from the database
+   ```
+ const querySnapshot = await getDocs(collection(db, `${param.sub}-Hot-Posts`))
+  ```
+  but if the the user wanted to view the Top posts of this month for the Askreddit sub it would be easy to get all the documents from the former database architecture
+  something like this 
+  ```
+ const querySnapshot = await getDocs(collection(db, param.sub,param.filter))
+  ```
+Unfortunately my database isnt stored like that so i ended up created some sort of map to match the firestore collection
+``` 
+  AskReddit: {
+      'ThisMonth': 'askreddit-top-month',
+      'Hot': 'askreddit-hot',
+      'ThisWeek': 'askreddit-top-week',
+      'ThisYear': 'askreddit-top-year',
+      'AllTime': 'askreddit-top-all',
+      'New': 'askreddit-new'
+    }
+    
+  //Askreddit is a property of an object subMap
+   
+    doc = subMap[params.sub][params.filter]
+    querySnapshot = await getDocs(collection(db, doc)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ ```
+ This also meant that i have to keep track of the current sub and sort always since the comments are stored along with each post document else its not possible to query /comments/id if the id belongs to a differet document
+ 
