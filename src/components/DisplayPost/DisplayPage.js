@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 const DisplayPage = (props) => {
 
-  // content prop contains front page;props optional parameter
+  // content prop contains front page;
   const { content, handler } = props
   const params = useParams();
   const [posts, setPosts] = useState([])

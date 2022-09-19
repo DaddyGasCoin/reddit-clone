@@ -113,17 +113,3 @@ const DisplayPost = (props) => {
 export default DisplayPost
 
 
-
-
-      // {
-      //   (() => {
-      //     if (!img)
-      //       return null
-      //     // return null while fetching data
-      //     if (!outBoundLink)
-      //       return <img src={img} className="thumbnail" />
-      //     else
-      //       return null
-      //   })()
-      // }
-
