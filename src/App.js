@@ -58,7 +58,8 @@ function App() {
 
   function subHandler(event) {
     const name = event.target.textContent
-    if (name === 'Front-Page') {
+    console.log(name)
+    if (name === 'Front-Page' || name === 'reddit') {
       setSubName(subMap.front.Hot)
     }
     else {

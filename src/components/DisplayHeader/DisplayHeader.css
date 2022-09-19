@@ -21,10 +21,10 @@
 
 .wrapper {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     grid-column: 1/2;
-
 }
+
 
 .wrapper.two {
     grid-column: 2/3;
@@ -90,6 +90,7 @@ span.dark {
 .logo {
     font-weight: 500;
     padding-left: 3px;
+    font-size: 24px;
 }
 
 .home-text {
