@@ -8,7 +8,10 @@ const DisplayCommentSort = (props) => {
 
    return (
       <div className="comment-sort" onClick={() => setFilterStatus(!filterStatus)}>
-         Sort By {curentSort}
+
+         <div> Sort By {curentSort} <span className="material-symbols-outlined comment">
+            arrow_drop_down
+         </span></div>
          {filterStatus ?
             <div className="comment-sort-combo">
                <div className="sort-combo-item" onClick={(event) => {

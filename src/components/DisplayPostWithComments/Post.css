@@ -97,6 +97,11 @@ span.medium {
     padding: 0px;
 }
 
+span.comment {
+    position: absolute;
+    top: 3px;
+}
+
 .light {
     font-size: 12px;
     color: #878a8c;
@@ -118,9 +123,9 @@ span.medium {
     line-height: 16px;
     border-bottom: 1px solid #EDEFF1;
     padding: 8px 2px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     position: relative;
-
+    cursor: pointer;
 }
 
 .vote-content {
