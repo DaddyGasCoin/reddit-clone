@@ -72,7 +72,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/reddit-clone">
       <Routes>
         <Route path="/" element={<DisplayHeader handler={subHandler} />}>
           <Route path="/" element={frontPage ? <DisplayPage content={frontPage} handler={sortHandler} /> : null} />
