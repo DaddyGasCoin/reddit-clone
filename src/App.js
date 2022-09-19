@@ -72,7 +72,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<DisplayHeader handler={subHandler} />}>
           <Route path="/" element={frontPage ? <DisplayPage content={frontPage} handler={sortHandler} /> : null} />
