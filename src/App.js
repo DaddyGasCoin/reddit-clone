@@ -23,7 +23,7 @@ function App() {
         posts = [...posts, obj]
       })
       setFrontPage(posts)
-      setSubName('reddit-front-hot')
+      setSubName('front-page-hot')
     }
     getDataFromDB()
   }, [])
